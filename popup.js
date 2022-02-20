@@ -22,3 +22,9 @@ chrome.storage.sync.get("color", ({ color }) => {
     });
   }
 
+function generateQuestions() {
+    // fetch("http://www.michellemobius.org:9005/qa", {method:"POST")
+}
+
+
+
