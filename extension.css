@@ -3,6 +3,8 @@ body {
     height: 400px;
 }
 
+/* Nav Bar */
+
 ul {
     list-style-type: none;
     margin: 0;
@@ -24,7 +26,11 @@ ul {
     text-decoration: none;
   }
   
-  /* Change the link color to #111 (black) on hover */
   li a:hover {
     background-color: #111;
+  }
+
+  /* Leaderboard Stats */
+  h2 {
+    font-size: 10px;
   }
