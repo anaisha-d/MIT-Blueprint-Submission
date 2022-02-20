@@ -44,7 +44,7 @@ ul {
   justify-content: center;
   flex-direction: column;
 }
-.quizButton {
+#quizButton {
     background-color: #333;
     border: none;
     color: white;
