@@ -6,6 +6,7 @@ import json
 from nltk.tokenize import sent_tokenize
 import random
 from flask_cors import CORS,cross_origin
+import urllib.parse
 
 nlp = pipeline("question-generation")
 
@@ -14,13 +15,14 @@ CORS(app)
 app.config['CORS_HEADERS']='Content-Type'
 
 
-@app.route('/qa/', methods=['GET', 'POST'])
+@app.route('/qa/', methods=['GET'])
 @cross_origin()
 def qa():
-    content = request.json
+    content = urllib.parse.unquote(request.args["text"])
+    print(content)
     #only use up to 10 sentences to not overload the server
     #start by splitting text into sentences
-    sentences=sent_tokenize(content["text"])
+    sentences=sent_tokenize(content)
     truncatedSentences = []
     count=0
     for s in sentences:
