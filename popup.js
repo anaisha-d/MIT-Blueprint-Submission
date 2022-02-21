@@ -30,14 +30,22 @@ function displayQuestions() {
     let answers = []
     s = document.getElementById("start")
     s.remove()
-    answers.push(`<input type="radio" id="html" name="1" value="Donetsk and Luhansk">
-      <label for="html"> Donetsk and Luhansk</label><br>">`)
-    answers.push(`<input type="radio" id="html" name="2" value="Russian military reservists">
-      <label for="html">Russian military reservists</label><br>">`)
-    answers.push(`<input type="radio" id="html" name="3" value="the Ukrainian army">
-      <label for="html">the Ukrainian army</label><br>">`)
-    answers.push(`<input type="radio" id="html" name="4" value="Women, children and the elderly">
-      <label for="html">Women, children and the elderly</label><br>">`)
+    answers.push(`
+    <input type="radio" id="1" name="1" value="Donetsk and Luhansk">
+    <label for="age1">Donetsk and Luhansk</label><br>
+    `)
+    answers.push(`
+    <input type="radio" id="1" name="2" value="Russian military reservists">
+    <label for="age1">Russian military reservists</label><br>
+    `)
+    answers.push(`
+    <input type="radio" id="1" name="3" value="the Ukrainian army">
+    <label for="age1">the Ukrainian army</label><br>
+    `)
+    answers.push(`
+    <input type="radio" id="1" name="4" value="Women, children and the elderly">
+    <label for="age1">Women, children and the elderly</label><br>
+    `)
     output.push(
         `<div class="question"> Who has been ordered to evacuate to Russia? </div>
         <div class="answers"> ${answers.join('')} </div>`
