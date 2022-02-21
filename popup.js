@@ -25,33 +25,45 @@
         document.getElementById("quizButton").addEventListener("click", displayQuestions);
     });
     qc = document.getElementById("quizContainer")
+
+    result = ""
+    function myFunction(browser) {
+        result = browser;
+      }
+
 function displayQuestions() {
     let output = []
     let answers = []
     s = document.getElementById("start")
     s.remove()
-    answers.push(`
-    <input type="radio" id="1" name="1" value="Donetsk and Luhansk">
+    answers.push(`<form>
+    <input type="radio" id="1" name="1"  onclick="myFunction(this.value)" value="Donetsk and Luhansk">
     <label for="age1">Donetsk and Luhansk</label><br>
     `)
     answers.push(`
-    <input type="radio" id="1" name="2" value="Russian military reservists">
+    <input type="radio" id="1" name="1" onclick="myFunction(this.value)" value="Russian military reservists">
     <label for="age1">Russian military reservists</label><br>
     `)
     answers.push(`
-    <input type="radio" id="1" name="3" value="the Ukrainian army">
+    <input type="radio" id="1" name="1" onclick="myFunction(this.value)" value="the Ukrainian army">
     <label for="age1">the Ukrainian army</label><br>
     `)
     answers.push(`
-    <input type="radio" id="1" name="4" value="Women, children and the elderly">
-    <label for="age1">Women, children and the elderly</label><br>
+    <input type="radio" id="1" name="1" onclick="myFunction(this.value)" value="Women, children and the elderly">
+    <label for="age1">Women, children and the elderly</label><br></form>
     `)
     output.push(
-        `<div class="question"> Who has been ordered to evacuate to Russia? </div>
-        <div class="answers"> ${answers.join('')} </div>`
+        `<div id="question"> Who has been ordered to evacuate to Russia? </div>
+        <div id="answers"> ${answers.join('')} </div> <div id = "result"><h1>${result}</h1></div>`
       );
+    output.push(`<div id = "submit"><button>Submit</button></div>`)
       qc.innerHTML = output.join('');
 }
+
+
+
+
+
 
 // function showResults(){
 
