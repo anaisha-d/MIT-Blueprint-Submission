@@ -14,7 +14,7 @@ CORS(app)
 app.config['CORS_HEADERS']='Content-Type'
 
 
-@app.route('/qa/', methods=['GET', 'POST'])
+@app.route('/qa/', methods=['OPTIONS', 'POST', 'GET'])
 @cross_origin()
 def qa():
     content = request.json
@@ -58,7 +58,7 @@ def qa():
     output["answers"]=answers
     output["correct"]=correctAnswer
     print(output)
-    return json.dumps(output)
+    return jsonify(output)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9005)

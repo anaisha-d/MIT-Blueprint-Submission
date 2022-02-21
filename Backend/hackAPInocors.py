@@ -1,22 +1,21 @@
 from flask import Flask
 from flask import jsonify
 from flask import request
+from flask import make_response
 from pipelines import pipeline
 import json
 from nltk.tokenize import sent_tokenize
 import random
-from flask_cors import CORS,cross_origin
 
 nlp = pipeline("question-generation")
 
 app = Flask(__name__)
-CORS(app)
-app.config['CORS_HEADERS']='Content-Type'
 
 
-@app.route('/qa/', methods=['GET', 'POST'])
-@cross_origin()
+@app.route('/qa/', methods=['OPTIONS','POST'])
 def qa():
+    if request.method=='OPTIONS':
+       return build_preflight_response()
     content = request.json
     #only use up to 10 sentences to not overload the server
     #start by splitting text into sentences
@@ -58,7 +57,18 @@ def qa():
     output["answers"]=answers
     output["correct"]=correctAnswer
     print(output)
-    return json.dumps(output)
+    return build_actual_response(jsonify(output))
+
+def build_preflight_response():
+  response=make_response()
+  response.headers.add("Access-Control-Allow-Origin","*")
+  response.headers.add("Access-Control-Allow-Headers","*")
+  respinse.headers.add("Access-Control-Allow-Methods","*")
+  return response
+
+def build_actual_response(response):
+  response.headers.add("Access-Control-Allow-Origin","*")
+  return response
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=9005)

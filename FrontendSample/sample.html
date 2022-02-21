@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<textarea id="text" name="text" rows="10" cols="80">
+In two ominous signs that Vladimir Putin may be readying an invasion of Ukraine, the Russian president on Friday signed a decree calling Russian military reservists to active training, while pro-Kremlin leaders in two breakaway “Russian-occupied” territories in eastern Ukraine ordered mobilization of men ages 18 to 55 to fight against their fellow Ukrainians. Ukraine’s Donbas region, which holds the two Russian-controlled territories — Donetsk and Luhansk — has been the site of intensified shelling as well as gas line explosions and a car bombing on Friday. Women, children and the elderly in the area have been ordered to evacuate to Russia. Kremlin-backed separatist leaders in Donbas dubiously assert that the Ukrainian army is to blame for the open hostilities, while the U.S. believes they are so-called false flag operations committed by the separatists themselves that Russia may use to justify actively invading Ukraine’s East.
+</textarea>
+
+<pre id="qa">
+</pre>
+
+<button type="button" onclick="getQA(document.getElementById('text').value)">Create QA</button>
+
+<script>
+
+
+var getQA=function(text){
+	fetch('https://www.api.michellemobius.org/qa?'+new URLSearchParams({text: text}),{headers: {Accept: 'application/json'}}).then(
+	function(response){
+		response.json().then(json => {
+		document.getElementById("qa").textContent = JSON.stringify(json, undefined, 2);
+		});
+	});
+}
+getQA(document.getElementById("text").value);
+
+
+</script>
+
+</html>
